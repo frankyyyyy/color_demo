@@ -12,7 +12,9 @@ class App extends React.Component{
         return (
             <View>
                 <Text style={styles.defaultText}>Sierra</Text>
-                <Text style={styles.defaultText}>Tanner</Text>
+                <Text style={ [styles.defaultText, styles.selectedText] }>
+                    Tanner
+                </Text>
                 <Text style={styles.defaultText}>Travis</Text>
             </View>
         )
