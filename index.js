@@ -1,17 +1,37 @@
 import React from 'react';
 
-import { AppRegistry, View, Text } from 'react-native'
+import {
+    StyleSheet,
+    AppRegistry,
+    View,
+    Text
+} from 'react-native'
 
 class App extends React.Component{
     render(){
         return (
             <View>
-                <Text>Sierra</Text>
-                <Text>Tanner</Text>
-                <Text>Travis</Text>
+                <Text style={styles.defaultText}>Sierra</Text>
+                <Text style={styles.defaultText}>Tanner</Text>
+                <Text style={styles.defaultText}>Travis</Text>
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    defaultText:{
+        fontSize: 22,
+        padding: 10,
+        color: 'black',
+        margin: 5,
+        borderWidth: StyleSheet.hairlineWidth
+    },
+    selectedText:{
+        backgroundColor: 'yellow',
+        color: 'blue',
+        fontWeight: 'bold'
+    }
+})
 
 AppRegistry.registerComponent('color_demo', () => App);
