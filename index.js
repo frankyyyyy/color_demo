@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import {
     StyleSheet,
@@ -8,31 +8,47 @@ import {
 } from 'react-native'
 
 class App extends React.Component{
+
+    constructor(){
+        super();
+        this.state = {
+            backgroundColor: 'blue'
+        }
+        this.changeColor = this.changeColor.bind(this)
+    }
+
+    changeColor(backgroundColor){
+        this.setState({backgroundColor})
+    }
+
     render(){
+        const { backgroundColor } = this.state
         return (
-            <View>
-                <Text style={styles.defaultText}>Sierra</Text>
-                <Text style={ [styles.defaultText, styles.selectedText] }>
-                    Tanner
-                </Text>
-                <Text style={styles.defaultText}>Travis</Text>
+            <View style={[ styles.container, {backgroundColor: backgroundColor} ]}>
+                <Text style={styles.button}
+                    onPress={()=>this.changeColor('green')}>Green</Text>
+                <Text style={styles.button}
+                    onPress={()=>this.changeColor('red')}>Red</Text>
             </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    defaultText:{
-        fontSize: 22,
-        padding: 10,
-        color: 'black',
-        margin: 5,
-        borderWidth: StyleSheet.hairlineWidth
+    container:{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF'
     },
-    selectedText:{
-        backgroundColor: 'yellow',
-        color: 'blue',
-        fontWeight: 'bold'
+    button: {
+        fontSize: 30,
+        margin: 10,
+        padding: 10,
+        borderWidth: 2,
+        borderRadius: 10,
+        alignSelf: 'stretch',
+        textAlign: 'center'
     }
 })
 
