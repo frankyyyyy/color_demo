@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     AppRegistry,
-    View,
-    Text,
-    TouchableHighlight
+    ScrollView,
 } from 'react-native'
+
+import  ColorButton from './components/ColorButton'
 
 class App extends React.Component{
 
@@ -25,21 +25,26 @@ class App extends React.Component{
     render(){
         const { backgroundColor } = this.state
         return (
-            <View style={[ styles.container, {backgroundColor: backgroundColor} ]}>
-
-                <TouchableHighlight style={styles.button}
-                    onPress={()=>this.changeColor('yellow')}
-                    underlayColor="orange">
-               <View style={styles.row}>
-                   <View style={[
-                       styles.sample,
-                       { backgroundColor: 'yellow' }
-                   ]} />
-                   <Text style={styles.text}>yellow</Text>
-               </View>
-                </TouchableHighlight>
-
-            </View>
+            <ScrollView style={[ styles.container, {backgroundColor: backgroundColor} ]}>
+                <ColorButton backgroundColor="red"
+                             onSelect={this.changeColor}/>
+                <ColorButton backgroundColor="blue"
+                             onSelect={this.changeColor}/>
+                <ColorButton backgroundColor="green"
+                             onSelect={this.changeColor}/>
+                <ColorButton backgroundColor="yellow"
+                             onSelect={this.changeColor}/>
+                <ColorButton backgroundColor="pink"
+                             onSelect={this.changeColor}/>
+                <ColorButton backgroundColor="salmon"
+                             onSelect={this.changeColor}/>
+                <ColorButton backgroundColor="black"
+                             onSelect={this.changeColor}/>
+                <ColorButton backgroundColor="white"
+                             onSelect={this.changeColor}/>
+                <ColorButton backgroundColor="red"
+                             onSelect={this.changeColor}/>
+            </ScrollView>
         )
     }
 }
@@ -47,32 +52,6 @@ class App extends React.Component{
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF'
-    },
-    button: {
-        margin: 10,
-        padding: 10,
-        borderWidth: 2,
-        borderRadius: 10,
-        alignSelf: 'stretch',
-        backgroundColor: 'rgba(255,255,255,.8)'
-    },
-    row:{
-        flexDirection: 'row',
-        alignItems: 'center'
-    },
-    sample:{
-        height: 20,
-        width: 20,
-        borderRadius: 10,
-        margin: 5,
-        backgroundColor: 'white'
-    },
-    text:{
-        fontSize: 30,
-        margin: 5
     }
 })
 
