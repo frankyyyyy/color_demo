@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     AppRegistry,
-    ListView,
-    Text
+    ListView
 } from 'react-native'
 
-import  ColorButton from './components/ColorButton'
+import ColorButton from './components/ColorButton'
+import ColorForm from './components/ColorForm'
 
 class App extends React.Component{
 
@@ -31,10 +31,22 @@ class App extends React.Component{
             dataSource: this.ds.cloneWithRows(availableColors)
         }
         this.changeColor = this.changeColor.bind(this)
+        this.newColor = this.newColor.bind(this)
     }
 
     changeColor(backgroundColor){
         this.setState({backgroundColor})
+    }
+
+    newColor(color){
+        const availableColors = [
+            ...this.state.availableColors,
+            color
+        ]
+        this.setState({
+            availableColors,
+            dataSource: this.ds.cloneWithRows(availableColors)
+        })
     }
 
     render(){
@@ -47,7 +59,7 @@ class App extends React.Component{
                                      onSelect={this.changeColor}/>
                     )}
                     renderHeader={() => (
-                        <Text style={styles.header}>Color List</Text>
+                       <ColorForm onNewColor={this.newColor}/>
                     )}>
 
             </ListView>
