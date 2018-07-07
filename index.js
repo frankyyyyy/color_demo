@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
+import { StackNavigator } from 'react-navigation'
 
 import {
-    AppRegistry,
-    Alert
+    AppRegistry
 } from 'react-native'
 
 import ColorList from './components/ColorList'
+import ColorInfo from './components/ColorInfo'
 
-class App extends Component{
-    render(){
-        return (
-            <ColorList onColorSelected={ color => Alert.alert(color) }/>
-        )
-    }
-}
+const App = StackNavigator({
+    Home: { screen: ColorList },
+    Details: { screen: ColorInfo }
+})
 
 AppRegistry.registerComponent('color_demo', () => App);
